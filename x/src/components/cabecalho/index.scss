@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+// tudao do site
+//
+// pagina toda || V
+.comp-cabecalho{
+    background-color: rgb(255, 255, 255);
+    font-family: 'Google Sans';
+    display: flex;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    position: sticky; // posotion sticky vai fazer com q o nav fique fixo na parte de cima da tela
+    top: 0;
+}
+
+// pagina toda eu acho
+//
+// organizacao dos primeiros botoes do nav || V
+
+.comp-cabecalho .botoeslink li {
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.comp-cabecalho .botoeslink li a {
+    padding: 11px;           // padding agora fica dentro do link
+    text-decoration: none;
+    border-radius: 8px;
+    color: black;
+    font-size: 15px;
+}
+
+.comp-cabecalho .botoeslink li a:hover {
+    background-color: rgb(243, 227, 230);
+    color: rgb(115, 38, 57);
+}
+
+// organizacao dos primeiros botoes do nav ^
+//
+// botao de pesquisa || V
+
+.comp-cabecalho input{
+    width: 300px;
+    height: 40px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    font-family: 'Google Sans';
+}
+
+// botao de pesquisa ^
+//
+// outros dois botao do nav | V
+
+.comp-cabecalho .botoes2 li {
+    display: inline-block;
+    margin-left: 6px;
+}
+
+.comp-cabecalho .botoes2 li a {
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+// botao do contato
+.comp-cabecalho .botoes2 .contato a {
+    padding: 10px;
+    border: 2px solid rgb(108, 27, 47);
+    color: rgb(108, 27, 47);
+}
+
+.comp-cabecalho .botoes2 .contato a:hover {
+    background-color: rgb(243, 227, 230);
+}
+
+// botao do cadstro
+.comp-cabecalho .botoes2 .cadastro a {
+    padding: 12px;
+    background-color: rgb(194, 86, 10);
+    color: rgb(255, 255, 255);
+}
+
+.comp-cabecalho .botoes2 .cadastro a:hover {
+    background-color: rgb(159, 66, 7);
+}
+
+
+// li e a corrigidos
+
+// outros dois botao do nav | ^

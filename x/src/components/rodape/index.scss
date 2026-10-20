@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Google Sans';
+}
+ 
+// tudao do site
+.comp-rodape{
+    background-color: rgb(108, 27, 47);
+    font-family: 'Google Sans';
+    color: white;
+    display: flex;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 300px;
+}
+.comp-rodape a{
+    color: white;
+
+}
+
+.comp-rodape .logo-nome{
+    display: flex;
+    gap: 6px;
+}

@@ -1,0 +1,4 @@
+Todo o projeto está dentro da pasta X, então para executar o projeto, antes é necessário abrir o terminal e executar o comando:
+ 	cd x
+Tendo executado este comando, pode-se executar o programa, com o comando:
+	npm start
