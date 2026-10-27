@@ -2,7 +2,7 @@ import { useState } from "react";
 import './index.scss';
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import Cabecalho from "../../components/cabecalho";
+import Cabecalho from "../../../components/cabecalho";
 
 export default function Chamada(){
 
