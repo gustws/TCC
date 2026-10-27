@@ -1,3 +1,1 @@
-"tcc do frei - 2026
-    
-" 
+tcc do frei - 2026
