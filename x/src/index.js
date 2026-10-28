@@ -13,6 +13,9 @@ import './pages/home/index.scss';
 import SobreNos from './pages/sobrenos/index.jsx';
 import './pages/sobrenos/index.scss';
 
+import Instituicoes from './pages/instituicoes/index.jsx';
+import './pages/instituicoes/index.scss';
+
 
 
 // imports de eventos
@@ -37,7 +40,8 @@ root.render(
         <BrowserRouter>
           <Routes>
               <Route path='/' element ={<Home/>}/>
-              <Route path='/SobreNos' element ={<SobreNos/>}/>
+              <Route path='/Instituicoes' element ={<Instituicoes/>}/>
+
               <Route path='/Contato' element ={<Contato/>}/>
               <Route path='/Cinema' element ={<Cinema />}/>
               <Route path='/Calc' element ={<Calc/>}/>
