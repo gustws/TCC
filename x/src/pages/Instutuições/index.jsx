@@ -52,7 +52,7 @@ export default function Instituicoes(){
                 <h1>Instituições de doação</h1>
                 <p>Encontre uma instituição perto de você e veja o que ela aceita.</p>
 
-                {/* filtros */}
+                // filtros de busca e cidade
                 <div className="filtros">
                     <div>
                         <label>Buscar</label>
