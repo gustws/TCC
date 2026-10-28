@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Pagina-Instituicoes{
+    background-color: #d8dadd;
+    color: #1c1718;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+}
+
+//
+// conteudo da pagina
+
+.Pagina-Instituicoes .conteudo{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.Pagina-Instituicoes h1{
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.Pagina-Instituicoes h3{
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.Pagina-Instituicoes p{
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.Pagina-Instituicoes .nota{
+    font-size: 14px;
+    color: #575a60;
+    margin-top: 20px;
+}
+
