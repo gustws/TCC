@@ -37,11 +37,24 @@ export default function SobreNos(){
 
                         <details>
                             <summary>Pra onde vai o dinheiro doado?</summary>
-                                <p>As doações vão para as instituições parceiras</p>
+                                <p>As doações vão para as instituições parceiras, que comprarão comida para preparar as refeições oferecidas no local.</p>
                         </details>
 
+                        <details>
+                            <summary>Como e para quem as instituições distribuem a comida?</summary>
+                            <p>As famílias devem ir até a instituição mais próxima e preencher o formulário de beneficiado. As instituições realizam entregas mensais de cestas básicas, além das refeições oferecias diariamente.</p>
+                        </details>
+
+                        <details>
+                            <summary>Como eu me torno uma instituição parceira?</summary>
+                            <p>Entre em contato conosco pelo formulário da página de contato, informando o nome, a cidade e o que a instituição precisa. </p>
+                        </details>
 
                 </div>
+
+                <h1>Transparência</h1>
+                <hr></hr>
+                <p>Todo mês, publicamos em <a href="google.com">nossas redes</a> quanto foi arrecadado, quanto foi repassado e para quais instituições. </p>
 
 
             <Rodape />

@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom/client';
 import NotFound from './pages/notfound/index.jsx';
 import './pages/notfound/index.scss';
 
+import Contato from './pages/contato/index.jsx';
+import './pages/contato/index.scss';
+
 import Home from './pages/home/index.jsx';
 import './pages/home/index.scss';
 
@@ -30,7 +33,9 @@ root.render(
         <BrowserRouter>
           <Routes>
               <Route path='/' element ={<Home/>}/>
-              <Route path='/Home' element ={<Home/>}/>
+              <Route path='/SobreNos' element ={<SobreNos/>}/>
+              <Route path='/Contato' element ={<Contato/>}/>
+
               <Route path='/Calc' element ={<Calc/>}/>
               <Route path='/Func' element ={<Func/>}/>    
               <Route path='/Chamada' element ={<Chamada/>}/>  

@@ -67,8 +67,7 @@
 // banner q tem a imagem
 
 .Pagina-Inicial .banner{
-    // a foto fica em public/imgs
-    background-image: url("/imgs/foto-hero.jpg");
+    background-image: url("./fotohero.jpg");
     background-size: cover;
     background-position: center;
     border-bottom: 14px solid #6b1a2e;
