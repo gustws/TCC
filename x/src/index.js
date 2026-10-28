@@ -13,7 +13,11 @@ import './pages/home/index.scss';
 import SobreNos from './pages/sobrenos/index.jsx';
 import './pages/sobrenos/index.scss';
 
+
+
 // imports de eventos
+import Cinema from './pages/eventos/cinema/index.jsx';
+import './pages/eventos/cinema/index.scss';
 import Calc from './pages/eventos/calc/index.jsx';
 import './pages/eventos/calc/index.scss';
 import Func from './pages/eventos/funcao/func.jsx';
@@ -35,7 +39,7 @@ root.render(
               <Route path='/' element ={<Home/>}/>
               <Route path='/SobreNos' element ={<SobreNos/>}/>
               <Route path='/Contato' element ={<Contato/>}/>
-
+              <Route path='/Cinema' element ={<Cinema />}/>
               <Route path='/Calc' element ={<Calc/>}/>
               <Route path='/Func' element ={<Func/>}/>    
               <Route path='/Chamada' element ={<Chamada/>}/>  
