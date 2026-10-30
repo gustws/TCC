@@ -1,0 +1,111 @@
+.Pagina-Contato{
+    background-color: rgb(216, 218, 221);
+}
+
+.Pagina-Contato .hero{
+    background-image: url('./fotohero.jpg');
+    background-color: rgb(120, 120, 120); // com o multiply, escurece a foto
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center 30%;
+    color: white;
+    padding: 60px 60px 50px 60px;
+}
+
+.Pagina-Contato .hero h1{
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.Pagina-Contato .hero p{
+    font-size: 18px;
+    max-width: 700px;
+}
+
+.Pagina-Contato .conteudo{
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    padding: 50px 45px;
+}
+
+.Pagina-Contato .card{
+    background-color: white;
+    border: 1px solid rgb(191, 194, 199);
+    border-radius: 12px;
+    padding: 30px 28px;
+}
+
+.Pagina-Contato .form{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.Pagina-Contato .form label{
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.Pagina-Contato .form input, .Pagina-Contato .form textarea{
+    border: 2px solid rgb(191, 194, 199);
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 16px;
+    font-family: inherit;
+    margin-bottom: 25px;
+    outline: none;
+}
+
+.Pagina-Contato .form input:focus, .Pagina-Contato .form textarea:focus{
+    border-color: rgb(110, 27, 45);
+}
+
+.Pagina-Contato .form textarea{
+    height: 130px;
+    resize: vertical;
+}
+
+.Pagina-Contato .form button{
+    align-self: flex-start;
+    background-color: rgb(194, 86, 10);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 22px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+.Pagina-Contato .form .sucesso{
+    margin-top: 15px;
+    color: rgb(30, 120, 60);
+    font-weight: 600;
+}
+
+.Pagina-Contato .info{
+    flex: 1;
+}
+
+.Pagina-Contato .info h2, .Pagina-Contato .info h3{
+    color: rgb(110, 27, 45);
+}
+
+.Pagina-Contato .info h2{
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.Pagina-Contato .info h3{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 6px;
+}
+
+.Pagina-Contato .info p{
+    line-height: 1.6;
+    font-size: 17px;
+}
