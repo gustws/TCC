@@ -57,9 +57,11 @@ export default function SobreNos(){
 
                 </div>
 
-                <h1>Transparência</h1>
-                <div className='hrfake'></div>
-                <p>Todo mês, publicamos em <a href="google.com">nossas redes</a> quanto foi arrecadado, quanto foi repassado e para quais instituições. </p>
+                <div className='transparencia'>
+                    <h1>Transparência</h1>
+                    <div className='hrfake'></div>
+                    <p>Todo mês, publicamos em <a href="google.com">nossas redes</a> quanto foi arrecadado, quanto foi repassado e para quais instituições. </p>
+                </div>
 
 
             <Rodape />
