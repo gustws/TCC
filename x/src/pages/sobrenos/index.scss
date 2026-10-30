@@ -1,0 +1,40 @@
+.Pagina-SobreNos .SobreCards{
+    color:black;
+    justify-content: space-evenly;
+    display: flex;
+    margin-top: 20px;
+}
+
+.Pagina-SobreNos .SobreCards .objetivo, .oqsomos, .ondeatuamos{
+    background-color: white;
+    padding: 15px;
+    border: 1px solid rgb(191, 194, 199);
+    border-radius: 12px;
+    width: 400px;
+    height: 110px;
+}
+
+.Pagina-SobreNos{
+    background-color: rgb(216, 218, 221);
+}
+
+.Pagina-SobreNos .sobre, .oqdoa, .faq{
+    font-size: 40px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.Pagina-SobreNos  .hrfake{
+    background-color: rgb(194, 86, 10);
+    height: 6px;
+    width: 430px;
+    border-radius: 4px;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.Pagina-SobreNos .oqDoar p{
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 500px;
+}

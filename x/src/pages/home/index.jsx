@@ -24,7 +24,7 @@ export default function Home(){
 
                         <div className="banner-texto">
                             <h1>Ninguém deveria dormir sem jantar.</h1>
-                            <p>O Prato Cheio conecta quem pode doar com instituições que já alimentam famílias todos os dias. Você escolhe como ajudar, e mostramos para onde foi cada doação.</p>
+                            <p>A Rede Alimenta conecta quem pode doar com instituições que já alimentam famílias todos os dias. Você escolhe como ajudar, e mostramos para onde foi cada doação.</p>
 
                             <Link className="botao-laranja" to="/doar">Quero doar</Link>
                             <Link className="botao-branco" to="/afiliado">Quero ser afiliado</Link>
@@ -105,12 +105,12 @@ export default function Home(){
                     <div className="depoimentos">
                         <div className="depoimento">
                             <p>Doei uma vez por curiosidade e hoje sou afiliada. Saber para onde vai cada real muda tudo.</p>
-                            <b>sandra, doadora recorrente</b>
+                            <b>marjorie, enfermeira do sao luis</b>
                         </div>
 
                         <div className="depoimento">
                             <p>Com a lista de necessidades no site, paramos de receber só arroz e passamos a receber o que falta.</p>
-                            <b>alex, coordenador de cozinha comunitária</b>
+                            <b>denis, cobrador do 6000-10</b>
                         </div>
                     </div>
 

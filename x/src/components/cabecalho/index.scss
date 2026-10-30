@@ -17,6 +17,7 @@
     justify-content: space-around;
     position: sticky; // posotion sticky vai fazer com q o nav fique fixo na parte de cima da tela
     top: 0;
+    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.12); 
 }
 
 // pagina toda eu acho
@@ -47,10 +48,10 @@
 
 .comp-cabecalho input{
     width: 300px;
-    height: 40px;
+    height: 44px;
     padding: 12px;
-    border-radius: 8px;
-    border: 1px solid gray;
+    border-radius: 14px;
+    border: 1.5px solid rgb(155, 157, 160);
     font-family: 'Google Sans';
 }
 
