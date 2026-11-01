@@ -41,3 +41,81 @@
     margin-top: 20px;
 }
 
+//
+// filtros (busca e cidade)
+
+.Pagina-Instituicoes .filtros{
+    display: flex;
+    gap: 16px;
+    margin: 24px 0 28px 0;
+}
+
+.Pagina-Instituicoes label{
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.Pagina-Instituicoes input{
+    width: 360px;
+    padding: 14px;
+    border: 1px solid #bfc2c7;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.Pagina-Instituicoes select{
+    padding: 14px;
+    border: 1px solid #bfc2c7;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+}
+
+//
+// cards das instituicoes
+
+.Pagina-Instituicoes .cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.Pagina-Instituicoes .card{
+    width: 260px;
+    background-color: white;
+    border: 1px solid #d9dfd0;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.Pagina-Instituicoes .cidade{
+    font-weight: bold;
+}
+
+// as etiquetas dos alimentos
+.Pagina-Instituicoes .tag{
+    display: inline-block;
+    background-color: #f3e3e6;
+    border-radius: 6px;
+    padding: 4px 10px;
+    margin: 0 8px 8px 0;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.Pagina-Instituicoes .botao-contorno{
+    display: block;
+    text-align: center;
+    border: 2px solid #6b1a2e;
+    color: #6b1a2e;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.Pagina-Instituicoes .botao-contorno:hover{
+    background-color: #f3e3e6;
+}
