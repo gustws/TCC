@@ -16,6 +16,9 @@ import './pages/sobrenos/index.scss';
 import Instituicoes from './pages/instituicoes/index.jsx';
 import './pages/instituicoes/index.scss';
 
+import Doacao from './pages/doar/index.jsx';
+import './pages/doar/index.scss';
+
 
 
 // imports de eventos
@@ -42,7 +45,7 @@ root.render(
               <Route path='/' element ={<Home/>}/>
               <Route path='/Instituicoes' element ={<Instituicoes/>}/>
               <Route path='/SobreNos' element ={<SobreNos/>}/>
-
+              <Route path='Doar' element={<Doacao/>}/>
               <Route path='/Contato' element ={<Contato/>}/>
               <Route path='/Cinema' element ={<Cinema />}/>
               <Route path='/Calc' element ={<Calc/>}/>

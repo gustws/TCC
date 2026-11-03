@@ -12,7 +12,7 @@ export default function Cabecalho(){
 
                 <ul className="botoeslink">
                     <li><Link to="/">Início</Link></li>
-                    <li><Link to="/Calc">Seja afiliado</Link></li>
+                    <li><Link to="/Doar">Faça sua doação</Link></li>
                     <li><Link to="/Instituicoes">Instituições</Link></li>
                     <li><Link to="/SobreNos">Sobre e dúvidas</Link></li>
                 </ul>

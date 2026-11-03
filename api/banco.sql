@@ -59,6 +59,16 @@ create table usuarios (
   telefone varchar(20)
 );
 
+create table contatos (
+  id int primary key auto_increment,
+  nome varchar(100),
+  email varchar(100),
+  mensagem varchar(500),
+  usuario_id int,
+  instituicao_id int,
+  foreign key (usuario_id) references usuarios(id),
+);
+
 select * from usuarios;
 select * from instituicao;
 select * from alimentos;

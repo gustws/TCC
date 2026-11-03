@@ -3,20 +3,39 @@ import './index.scss';
 import Cabecalho from "../../components/cabecalho";
 import Rodape from "../../components/rodape";
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:2078';
+
 export default function Contato(){
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [mensagem, setMensagem] = useState('');
     const [enviado, setEnviado] = useState(false);
+    const [erro, setErro] = useState('');
 
-    function enviar(e){
+    async function enviar(e){
         e.preventDefault();
+        setEnviado(false);
+        setErro('');
 
-        setEnviado(true);
-        setNome('');
-        setEmail('');
-        setMensagem('');
+        try {
+            const resposta = await fetch(`${API_URL}/contato`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nome, email, mensagem })
+            });
+
+            if (!resposta.ok)
+                throw new Error('Falha ao enviar');
+
+            setEnviado(true);
+            setNome('');
+            setEmail('');
+            setMensagem('');
+        }
+        catch (err) {
+            setErro('Não foi possível enviar sua mensagem. Tente novamente.');
+        }
     }
 
     return(
@@ -61,6 +80,7 @@ export default function Contato(){
                     <button type="submit">Enviar mensagem</button>
 
                     {enviado && <span className="sucesso">Mensagem enviada! Obrigado pelo contato.</span>}
+                    {erro && <span className="erro">{erro}</span>}
                 </form>
 
                 <section className="card info">
