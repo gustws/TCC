@@ -22,7 +22,6 @@ export default function Doacao(){
     const [alimentoId, setAlimentoId] = useState('');
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
-    const [recorrente, setRecorrente] = useState(false);
 
     const [instituicoes, setInstituicoes] = useState([]);
     const [alimentos, setAlimentos] = useState([]);
@@ -64,8 +63,7 @@ export default function Doacao(){
                 usuario_id: null,
                 instituicao_id,
                 nome_doador: nome,
-                email_doador: email,
-                recorrente: recorrente ? 1 : 0
+                email_doador: email
             };
         }
         else {
@@ -96,7 +94,6 @@ export default function Doacao(){
             setAlimentoId('');
             setNome('');
             setEmail('');
-            setRecorrente(false);
         }
         catch (err) {
             setErro('Não foi possível registrar sua doação. Tente novamente.');
@@ -179,18 +176,6 @@ export default function Doacao(){
                         required
                     />
 
-                    {tipo === 'dinheiro' &&
-                        <div className="checkbox">
-                            <input
-                                id="recorrente"
-                                type="checkbox"
-                                checked={recorrente}
-                                onChange={e => setRecorrente(e.target.checked)}
-                            />
-                            <label htmlFor="recorrente">Quero que essa doação se repita todo mês</label>
-                        </div>
-                    }
-
                     <button type="submit">Enviar doação</button>
 
                     {enviado && <span className="sucesso">Doação registrada! Obrigado por ajudar. Entraremos em contato.</span>}
@@ -203,7 +188,6 @@ export default function Doacao(){
                     <ul className="beneficios">
                         <li>Dinheiro ou alimentos: escolha o jeito que cabe na sua rotina.</li>
                         <li>Cada doação é direcionada a uma instituição parceira, com o destino publicado.</li>
-                        <li>A doação mensal garante refeições de forma contínua.</li>
                     </ul>
 
                     <h3>Prefere conversar antes?</h3>

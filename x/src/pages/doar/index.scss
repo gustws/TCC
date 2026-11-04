@@ -1,7 +1,3 @@
-// Estilos extras da página de doação.
-// O restante (hero, card, form, info) vem de ../contato/index.scss.
-// Se os inputs do contato usam outras cores/bordas, ajuste o select abaixo para ficar igual.
-
 .Pagina-Doacao {
 
     .form {
@@ -23,22 +19,6 @@
             }
         }
 
-        .checkbox {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            input {
-                width: auto;
-                margin: 0;
-            }
-
-            label {
-                margin: 0;
-                font-weight: 500;
-            }
-        }
-
         .erro {
             display: block;
             color: #b3261e;
@@ -56,4 +36,4 @@
             }
         }
     }
-}
+}   
