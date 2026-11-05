@@ -32,6 +32,8 @@ import Chamada from './pages/eventos/chamada api/index.jsx';
 import './pages/eventos/chamada api/index.scss';
 import App from './pages/eventos/app/App.jsx';
 import './pages/eventos/app/App.scss';
+import Acai from './pages/eventos/acai/index.jsx';
+import './pages/eventos/acai/index.scss';
 
 
 
@@ -47,6 +49,8 @@ root.render(
               <Route path='/SobreNos' element ={<SobreNos/>}/>
               <Route path='Doar' element={<Doacao/>}/>
               <Route path='/Contato' element ={<Contato/>}/>
+
+              <Route path='/Acai' element ={<Acai />}/>
               <Route path='/Cinema' element ={<Cinema />}/>
               <Route path='/Calc' element ={<Calc/>}/>
               <Route path='/Func' element ={<Func/>}/>    
