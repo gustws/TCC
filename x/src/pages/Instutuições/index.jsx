@@ -20,7 +20,7 @@ export default function Instituicoes(){
     const [busca, setBusca] = useState("");
     const [cidade, setCidade] = useState("");
 
-    // lista de instituições que passaram nos filtros (começa vazia)
+    // aqui a gente monta a lista que vai aparecer na tela
     let lista = [];
 
     // passa por cada instituição, uma de cada vez
@@ -52,7 +52,7 @@ export default function Instituicoes(){
                 <h1>Instituições de doação</h1>
                 <p>Encontre uma instituição perto de você e veja o que ela aceita.</p>
 
-                // filtros de busca e cidade
+                {/* filtros */}
                 <div className="filtros">
                     <div>
                         <label>Buscar</label>
