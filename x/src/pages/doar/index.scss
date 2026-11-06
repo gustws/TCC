@@ -1,0 +1,39 @@
+.Pagina-Doacao {
+
+    .form {
+
+        select {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-family: inherit;
+            color: inherit;
+            background-color: #fff;
+            border: 2px solid #c9ccd2;
+            border-radius: 10px;
+            box-sizing: border-box;
+
+            &:focus {
+                outline: none;
+                border-color: #c4570a;
+            }
+        }
+
+        .erro {
+            display: block;
+            color: #b3261e;
+        }
+    }
+
+    .info {
+
+        .beneficios {
+            padding-left: 20px;
+
+            li {
+                margin-bottom: 12px;
+                line-height: 1.6;
+            }
+        }
+    }
+}   

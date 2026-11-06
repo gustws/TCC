@@ -4,13 +4,26 @@ import ReactDOM from 'react-dom/client';
 import NotFound from './pages/notfound/index.jsx';
 import './pages/notfound/index.scss';
 
+import Contato from './pages/contato/index.jsx';
+import './pages/contato/index.scss';
+
 import Home from './pages/home/index.jsx';
 import './pages/home/index.scss';
 
 import SobreNos from './pages/sobrenos/index.jsx';
 import './pages/sobrenos/index.scss';
 
+import Instituicoes from './pages/instituicoes/index.jsx';
+import './pages/instituicoes/index.scss';
+
+import Doacao from './pages/doar/index.jsx';
+import './pages/doar/index.scss';
+
+
+
 // imports de eventos
+import Cinema from './pages/eventos/cinema/index.jsx';
+import './pages/eventos/cinema/index.scss';
 import Calc from './pages/eventos/calc/index.jsx';
 import './pages/eventos/calc/index.scss';
 import Func from './pages/eventos/funcao/func.jsx';
@@ -19,6 +32,8 @@ import Chamada from './pages/eventos/chamada api/index.jsx';
 import './pages/eventos/chamada api/index.scss';
 import App from './pages/eventos/app/App.jsx';
 import './pages/eventos/app/App.scss';
+import Acai from './pages/eventos/acai/index.jsx';
+import './pages/eventos/acai/index.scss';
 
 
 
@@ -30,7 +45,13 @@ root.render(
         <BrowserRouter>
           <Routes>
               <Route path='/' element ={<Home/>}/>
-              <Route path='/Home' element ={<Home/>}/>
+              <Route path='/Instituicoes' element ={<Instituicoes/>}/>
+              <Route path='/SobreNos' element ={<SobreNos/>}/>
+              <Route path='Doar' element={<Doacao/>}/>
+              <Route path='/Contato' element ={<Contato/>}/>
+
+              <Route path='/Acai' element ={<Acai />}/>
+              <Route path='/Cinema' element ={<Cinema />}/>
               <Route path='/Calc' element ={<Calc/>}/>
               <Route path='/Func' element ={<Func/>}/>    
               <Route path='/Chamada' element ={<Chamada/>}/>  

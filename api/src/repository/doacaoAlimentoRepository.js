@@ -3,15 +3,16 @@ import { con } from "./connection.js";
 
 export async function saveDoacaoAlimento(doacao) {
   const command = `
-    insert into doacao_alimento (alimento_id, data_doacao, usuario_id, instituicao_id)
-                         values (?, ?, ?, ?)
+    insert into doacao_alimento (alimento_id, data_doacao, instituicao_id, nome_doador, email_doador)
+                         values (?, ?, ?, ?, ?)
   `
 
   const [result] = await con.query(command, [
     doacao.alimento_id,
     doacao.data_doacao,
-    doacao.usuario_id,
-    doacao.instituicao_id
+    doacao.instituicao_id ?? null,
+    doacao.nome_doador ?? null,
+    doacao.email_doador ?? null
   ]);
 
   return result.insertId;
@@ -23,8 +24,9 @@ export async function getDoacaoAlimento(id) {
     select id,
            alimento_id,
            data_doacao,
-           usuario_id,
-           instituicao_id
+           instituicao_id,
+           nome_doador,
+           email_doador
      from doacao_alimento
     where id = ?
   `
@@ -39,8 +41,9 @@ export async function listDoacoesAlimento() {
     select id,
            alimento_id,
            data_doacao,
-           usuario_id,
-           instituicao_id
+           instituicao_id,
+           nome_doador,
+           email_doador
      from doacao_alimento
   `
 
@@ -51,13 +54,16 @@ export async function listDoacoesAlimento() {
 
 export async function listDoacoesAlimentoDetalhado() {
   const command = `
-    select doacao_alimento.id, doacao_alimento.data_doacao, alimentos.nome as alimento, usuarios.nome as usuario, instituicao.nome as instituicao
+    select doacao_alimento.id,
+           doacao_alimento.data_doacao,
+           doacao_alimento.nome_doador,
+           doacao_alimento.email_doador,
+           alimentos.nome as alimento,
+           instituicao.nome as instituicao
       from doacao_alimento
-      inner join alimentos 
+      inner join alimentos
         on alimentos.id = doacao_alimento.alimento_id
-      inner join usuarios 
-        on usuarios.id = doacao_alimento.usuario_id
-      inner join instituicao 
+      left join instituicao
         on instituicao.id = doacao_alimento.instituicao_id
      order by doacao_alimento.data_doacao desc
   `
@@ -72,16 +78,18 @@ export async function updateDoacaoAlimento(id, doacao) {
     update doacao_alimento
        set alimento_id = ?,
            data_doacao = ?,
-           usuario_id = ?,
-           instituicao_id = ?
+           instituicao_id = ?,
+           nome_doador = ?,
+           email_doador = ?
      where id = ?
   `
 
   const [result] = await con.query(command, [
     doacao.alimento_id,
     doacao.data_doacao,
-    doacao.usuario_id,
-    doacao.instituicao_id,
+    doacao.instituicao_id ?? null,
+    doacao.nome_doador ?? null,
+    doacao.email_doador ?? null,
     id
   ]);
   return result.affectedRows;

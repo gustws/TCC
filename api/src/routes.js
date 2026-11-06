@@ -4,6 +4,7 @@ import alimentos from './controller/alimentosController.js'
 import estoque from './controller/estoqueController.js'
 import doacaoAlimento from './controller/doacaoAlimentoController.js'
 import doacaoDinheiro from './controller/doacaoDinheiroController.js'
+import contatos from './controller/contatosController.js'
 
 
 export function addRoutes(api) {
@@ -13,4 +14,5 @@ export function addRoutes(api) {
   api.use(estoque);
   api.use(doacaoAlimento);
   api.use(doacaoDinheiro);
+  api.use(contatos);
 }
