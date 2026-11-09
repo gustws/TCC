@@ -1,3 +1,6 @@
+// fontes do google (titulo e texto)
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Nunito+Sans:wght@400;600;700&display=swap");
+
 *{
     margin: 0;
     padding: 0;
@@ -7,7 +10,7 @@
 .Pagina-Instituicoes{
     background-color: #d8dadd;
     color: #1c1718;
-    font-family: Arial, sans-serif;
+    font-family: "Nunito Sans", Arial, sans-serif;
     font-size: 17px;
 }
 
@@ -15,30 +18,34 @@
 // conteudo da pagina
 
 .Pagina-Instituicoes .conteudo{
-    max-width: 1100px;
+    max-width: 1300px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 60px 40px 80px 40px;
 }
 
 .Pagina-Instituicoes h1{
-    font-size: 48px;
-    margin-bottom: 16px;
+    font-family: "Bricolage Grotesque", Arial, sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    margin-bottom: 14px;
 }
 
 .Pagina-Instituicoes h3{
-    font-size: 20px;
+    font-family: "Bricolage Grotesque", Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
     margin-bottom: 6px;
 }
 
 .Pagina-Instituicoes p{
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     line-height: 1.5;
 }
 
 .Pagina-Instituicoes .nota{
     font-size: 14px;
     color: #575a60;
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
 //
@@ -47,7 +54,7 @@
 .Pagina-Instituicoes .filtros{
     display: flex;
     gap: 16px;
-    margin: 24px 0 28px 0;
+    margin: 28px 0 32px 0;
 }
 
 .Pagina-Instituicoes label{
@@ -57,19 +64,34 @@
 }
 
 .Pagina-Instituicoes input{
-    width: 360px;
-    padding: 14px;
-    border: 1px solid #bfc2c7;
-    border-radius: 8px;
-    font-size: 16px;
+    width: 440px;
+    padding: 14px 16px;
+    border: 2px solid #bfc2c7;
+    border-radius: 10px;
+    font-family: "Nunito Sans", Arial, sans-serif;
+    font-size: 17px;
+    background-color: white;
 }
 
 .Pagina-Instituicoes select{
-    padding: 14px;
-    border: 1px solid #bfc2c7;
-    border-radius: 8px;
-    font-size: 16px;
+    width: 220px;
+    padding: 14px 16px;
+    border: 2px solid #bfc2c7;
+    border-radius: 10px;
+    font-family: "Nunito Sans", Arial, sans-serif;
+    font-size: 17px;
     background-color: white;
+}
+
+// quando clica no campo, a borda fica vinho
+.Pagina-Instituicoes input:focus{
+    border-color: #6b1a2e;
+    outline: none;
+}
+
+.Pagina-Instituicoes select:focus{
+    border-color: #6b1a2e;
+    outline: none;
 }
 
 //
@@ -81,39 +103,48 @@
     gap: 20px;
 }
 
+// os circulos laranja do canto sao uma imagem (public/imgs/circulos.svg)
 .Pagina-Instituicoes .card{
-    width: 260px;
+    width: 290px;
     background-color: white;
+    background-image: url("/imgs/circulos.svg");
+    background-repeat: no-repeat;
+    background-position: top right;
     border: 1px solid #d9dfd0;
     border-radius: 16px;
-    padding: 20px;
+    padding: 26px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .Pagina-Instituicoes .cidade{
-    font-weight: bold;
+    font-weight: 700;
+    margin-bottom: 14px;
 }
 
 // as etiquetas dos alimentos
 .Pagina-Instituicoes .tag{
     display: inline-block;
     background-color: #f3e3e6;
+    color: #4a1120;
     border-radius: 6px;
-    padding: 4px 10px;
+    padding: 5px 11px;
     margin: 0 8px 8px 0;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .Pagina-Instituicoes .botao-contorno{
     display: block;
     text-align: center;
     border: 2px solid #6b1a2e;
+    background-color: white;
     color: #6b1a2e;
-    padding: 10px;
+    padding: 12px;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: bold;
-    margin-top: 12px;
+    font-size: 17px;
+    font-weight: 700;
+    margin-top: 16px;
 }
 
 .Pagina-Instituicoes .botao-contorno:hover{
