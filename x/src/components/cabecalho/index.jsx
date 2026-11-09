@@ -21,7 +21,7 @@ export default function Cabecalho(){
 
                 <ul className="botoes2">
                     <li className="contato"><Link to="/Contato">Contato</Link></li>
-                    <li className="cadastro"><Link to="/Register">Cadastrar-se</Link></li>
+                    <li className="cadastro"><Link to="/Register">Painel Alimenta</Link></li>
                 </ul>
 
             
