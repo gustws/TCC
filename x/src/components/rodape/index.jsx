@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './index.scss';
 import { Link } from 'react-router-dom';
-import { createIcons, Drumstick } from 'lucide-react';
+import { createIcons, Heart } from 'lucide-react';
 
 export default function Rodape(){
 
@@ -11,11 +11,11 @@ export default function Rodape(){
         <footer className="comp-rodape">
 
             <div className="logo-nome">
-                <Drumstick />
-                <h2>Mesa Cheia</h2>
+               <Heart />
+                <h2>Rede Alimenta</h2>
             </div>
 
-            <p>© 2026 Mesa Cheia, Inc.</p>
+            <p>© 2026 Rede Alimenta, Inc.</p>
 
             <Link to="/">← Voltar à pagina inicial</Link>
             

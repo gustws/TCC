@@ -56,7 +56,7 @@ export default function Instituicoes(){
                 <div className="filtros">
                     <div>
                         <label>Buscar</label>
-                        <input
+                        <input className="busca"
                             type="text"
                             placeholder="Nome ou alimento"
                             value={busca}

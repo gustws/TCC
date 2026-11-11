@@ -1,8 +1,10 @@
+import bcrypt from 'bcryptjs';
 import * as db from '../repository/usuariosRepository.js';
 
 
 export async function saveUsuario(usuario) {
-  return db.saveUsuario(usuario);
+  const senha = await bcrypt.hash(usuario.senha, 10);
+  return db.saveUsuario({ ...usuario, senha });
 }
 
 
@@ -22,7 +24,8 @@ export async function listUsuarios() {
 
 
 export async function updateUsuario(id, usuario) {
-  return db.updateUsuario(id, usuario);
+  const senha = await bcrypt.hash(usuario.senha, 10);
+  return db.updateUsuario(id, { ...usuario, senha });
 }
 
 

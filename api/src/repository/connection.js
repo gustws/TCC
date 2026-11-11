@@ -4,7 +4,8 @@ const con = await mysql.createConnection({
   host: 'localhost',
   user: 'root',
   database: 'MesaCheiaDB',
-  password: 'root'
+  password: 'root',
+  dateStrings: true
 })
 
 console.log('Conectou com MYSQL!');

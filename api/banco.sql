@@ -21,11 +21,11 @@ create table instituicao (
 create table usuarios (
   id int primary key auto_increment,
   nome varchar(100),
-  email varchar(100),
+  email varchar(100) unique,
   senha varchar(255),
-  telefone varchar(20)
+  telefone varchar(20),
+  admin boolean not null default false
 );
-
 create table estoque (
   id int primary key auto_increment,
   quantidade int,

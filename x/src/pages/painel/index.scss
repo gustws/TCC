@@ -1,0 +1,81 @@
+.Pagina-Painel {
+
+    .conteudo {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .resumo {
+        display: flex;
+        gap: 25px;
+        align-items: stretch;
+
+        .card {
+            flex: 1;
+
+            h2 {
+                color: rgb(110, 27, 45);
+                font-size: 32px;
+                margin-bottom: 6px;
+            }
+        }
+
+        .sair {
+            align-self: flex-start;
+            background-color: white;
+            color: rgb(110, 27, 45);
+            border: 2px solid rgb(110, 27, 45);
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+
+    .abas {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+
+        button {
+            background-color: white;
+            border: 2px solid rgb(191, 194, 199);
+            border-radius: 8px;
+            padding: 10px 18px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+
+            &.ativa {
+                background-color: rgb(194, 86, 10);
+                border-color: rgb(194, 86, 10);
+                color: white;
+            }
+        }
+    }
+
+    .tabela-scroll {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th, td {
+            text-align: left;
+            padding: 12px 10px;
+            border-bottom: 1px solid rgb(191, 194, 199);
+        }
+
+        th {
+            color: rgb(110, 27, 45);
+        }
+    }
+
+    .erro {
+        color: #b3261e;
+        font-weight: 600;
+    }
+}

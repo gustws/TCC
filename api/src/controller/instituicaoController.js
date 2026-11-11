@@ -1,9 +1,11 @@
 import { Router } from 'express';
 import * as dbInstituicao from '../service/instituicaoService.js';
+import { exigirAdmin } from '../utils/auth.js';
 
 const endpoints = Router();
 
 
+// GETs públicos: o formulário de doação lista as instituições
 endpoints.get('/instituicao/:id', async (req, resp) => {
   let id = req.params.id;
 
@@ -16,14 +18,14 @@ endpoints.get('/instituicao', async (req, resp) => {
   resp.send(instituicoes);
 })
 
-endpoints.post('/instituicao', async (req, resp) => {
+endpoints.post('/instituicao', exigirAdmin, async (req, resp) => {
   let instituicao = req.body;
 
   let id = await dbInstituicao.saveInstituicao(instituicao);
   resp.send({ id });
 })
 
-endpoints.put('/instituicao/:id', async (req, resp) => {
+endpoints.put('/instituicao/:id', exigirAdmin, async (req, resp) => {
   let id = req.params.id;
   let instituicao = req.body;
 
@@ -31,7 +33,7 @@ endpoints.put('/instituicao/:id', async (req, resp) => {
   resp.send({ qtd })
 })
 
-endpoints.delete('/instituicao/:id', async (req, resp) => {
+endpoints.delete('/instituicao/:id', exigirAdmin, async (req, resp) => {
   let id = req.params.id;
 
   let qtd = await dbInstituicao.deleteInstituicao(id);

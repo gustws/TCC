@@ -19,6 +19,11 @@ import './pages/instituicoes/index.scss';
 import Doacao from './pages/doar/index.jsx';
 import './pages/doar/index.scss';
 
+import Login from './pages/login/index.jsx';
+import './pages/login/index.scss';
+
+import Painel from './pages/painel/index.jsx';
+import './pages/painel/index.scss';
 
 
 // imports de eventos
@@ -49,6 +54,9 @@ root.render(
               <Route path='/SobreNos' element ={<SobreNos/>}/>
               <Route path='Doar' element={<Doacao/>}/>
               <Route path='/Contato' element ={<Contato/>}/>
+              <Route path='/Login' element={<Login/>}/>
+              <Route path='/Painel' element={<Painel/>}/>
+              <Route path='*' element ={<NotFound/>}/>  
 
               <Route path='/Acai' element ={<Acai />}/>
               <Route path='/Cinema' element ={<Cinema />}/>
@@ -56,7 +64,7 @@ root.render(
               <Route path='/Func' element ={<Func/>}/>    
               <Route path='/Chamada' element ={<Chamada/>}/>  
               <Route path='/App' element ={<App/>}/>
-              <Route path='*' element ={<NotFound/>}/>  
+
           </Routes>
         </BrowserRouter>
   </React.StrictMode>

@@ -8,7 +8,7 @@ export default function Cabecalho(){
     return(
 
         <div className="comp-cabecalho">
-                <Link to="/"><img src="/assets/images/logotcc.png" alt="Logo" /></Link> 
+                <Link to="/"><img src="/assets/imgs/logotcc.png" alt="Logo" /></Link> 
 
                 <ul className="botoeslink">
                     <li><Link to="/">Início</Link></li>
@@ -21,7 +21,7 @@ export default function Cabecalho(){
 
                 <ul className="botoes2">
                     <li className="contato"><Link to="/Contato">Contato</Link></li>
-                    <li className="cadastro"><Link to="/Register">Painel Alimenta</Link></li>
+                    <li className="cadastro"><Link to="/Painel">Painel Alimenta</Link></li>
                 </ul>
 
             

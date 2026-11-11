@@ -1,9 +1,11 @@
 import { Router } from 'express';
 import * as dbAlimento from '../service/alimentosService.js';
+import { exigirAdmin } from '../utils/auth.js';
 
 const endpoints = Router();
 
 
+// GETs públicos: o formulário de doação lista os alimentos
 endpoints.get('/alimento/:id', async (req, resp) => {
   let id = req.params.id;
 
@@ -16,14 +18,14 @@ endpoints.get('/alimento', async (req, resp) => {
   resp.send(alimentos);
 })
 
-endpoints.post('/alimento', async (req, resp) => {
+endpoints.post('/alimento', exigirAdmin, async (req, resp) => {
   let alimento = req.body;
 
   let id = await dbAlimento.saveAlimento(alimento);
   resp.send({ id });
 })
 
-endpoints.put('/alimento/:id', async (req, resp) => {
+endpoints.put('/alimento/:id', exigirAdmin, async (req, resp) => {
   let id = req.params.id;
   let alimento = req.body;
 
@@ -31,7 +33,7 @@ endpoints.put('/alimento/:id', async (req, resp) => {
   resp.send({ qtd })
 })
 
-endpoints.delete('/alimento/:id', async (req, resp) => {
+endpoints.delete('/alimento/:id', exigirAdmin, async (req, resp) => {
   let id = req.params.id;
 
   let qtd = await dbAlimento.deleteAlimento(id);

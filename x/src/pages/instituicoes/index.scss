@@ -1,16 +1,17 @@
 // fontes do google (titulo e texto)
-@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Nunito+Sans:wght@400;600;700&display=swap");
+
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Google Sans";
 }
 
 .Pagina-Instituicoes{
     background-color: #d8dadd;
     color: #1c1718;
-    font-family: "Nunito Sans", Arial, sans-serif;
+    font-family: "Google Sans", Arial, sans-serif;
     font-size: 17px;
 }
 
@@ -24,14 +25,14 @@
 }
 
 .Pagina-Instituicoes h1{
-    font-family: "Bricolage Grotesque", Arial, sans-serif;
+    font-family: "Google Sans", Arial, sans-serif;
     font-size: 56px;
     font-weight: 800;
     margin-bottom: 14px;
 }
 
 .Pagina-Instituicoes h3{
-    font-family: "Bricolage Grotesque", Arial, sans-serif;
+    font-family: "Google Sans", Arial, sans-serif;
     font-size: 22px;
     font-weight: 800;
     margin-bottom: 6px;
@@ -63,12 +64,12 @@
     margin-bottom: 8px;
 }
 
-.Pagina-Instituicoes input{
+.Pagina-Instituicoes .busca{
     width: 440px;
     padding: 14px 16px;
     border: 2px solid #bfc2c7;
     border-radius: 10px;
-    font-family: "Nunito Sans", Arial, sans-serif;
+    font-family: "Google Sans", Arial, sans-serif;
     font-size: 17px;
     background-color: white;
 }
@@ -84,7 +85,7 @@
 }
 
 // quando clica no campo, a borda fica vinho
-.Pagina-Instituicoes input:focus{
+.Pagina-Instituicoes .busca:focus{
     border-color: #6b1a2e;
     outline: none;
 }
@@ -107,7 +108,6 @@
 .Pagina-Instituicoes .card{
     width: 290px;
     background-color: white;
-   background-image: url("/assets/imgs/circulos.svg");
     background-repeat: no-repeat;
     background-position: top right;
     border: 1px solid #d9dfd0;

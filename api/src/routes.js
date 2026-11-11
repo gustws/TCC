@@ -5,9 +5,10 @@ import estoque from './controller/estoqueController.js'
 import doacaoAlimento from './controller/doacaoAlimentoController.js'
 import doacaoDinheiro from './controller/doacaoDinheiroController.js'
 import contatos from './controller/contatosController.js'
-
+import auth from './controller/authController.js'
 
 export function addRoutes(api) {
+  api.use(auth);
   api.use(usuarios);
   api.use(instituicao);
   api.use(alimentos);
