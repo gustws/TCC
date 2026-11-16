@@ -1,6 +1,6 @@
 import mysql from 'mysql2/promise'
 
-const con = await mysql.createConnection({
+const con = mysql.createPool({
   host: 'localhost',
   user: 'root',
   database: 'MesaCheiaDB',
@@ -8,8 +8,7 @@ const con = await mysql.createConnection({
   dateStrings: true
 })
 
-console.log('Conectou com MYSQL!');
+console.log('Conectou com o MySQL');
 
 export { con };
-  
 

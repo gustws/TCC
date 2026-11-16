@@ -20,13 +20,17 @@ export default function Doacao(){
     const [instituicaoId, setInstituicaoId] = useState('');
     const [valor, setValor] = useState('');
     const [alimentoId, setAlimentoId] = useState('');
+    const [quantidade, setQuantidade] = useState('');
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
-    const [quantidade, setQuantidade] = useState('');
+
     const [instituicoes, setInstituicoes] = useState([]);
     const [alimentos, setAlimentos] = useState([]);
     const [enviado, setEnviado] = useState(false);
     const [erro, setErro] = useState('');
+
+    // alimento escolhido, para mostrar a unidade (kg, litros...) ao lado da quantidade
+    const alimentoSelecionado = alimentos.find(item => String(item.id) === alimentoId);
 
     useEffect(() => {
         async function carregar() {
@@ -68,15 +72,15 @@ export default function Doacao(){
         }
         else {
             rota = '/doacao-alimento';
-                corpo = {
-                    alimento_id: Number(alimentoId),
-                    quantidade: Number(quantidade),
-                    data_doacao: dataHoje(),
-                    usuario_id: null,
-                    instituicao_id,
-                    nome_doador: nome,
-                    email_doador: email
-                };
+            corpo = {
+                alimento_id: Number(alimentoId),
+                quantidade: Number(quantidade),
+                data_doacao: dataHoje(),
+                usuario_id: null,
+                instituicao_id,
+                nome_doador: nome,
+                email_doador: email
+            };
         }
 
         try {
@@ -86,18 +90,24 @@ export default function Doacao(){
                 body: JSON.stringify(corpo)
             });
 
-            if (!resposta.ok)
-                throw new Error('Falha ao enviar');
+            if (!resposta.ok) {
+                // se a API explicou o motivo (ex.: quantidade inválida), mostra na tela
+                const dados = await resposta.json().catch(() => ({}));
+                throw new Error(dados.erro || 'Falha ao enviar');
+            }
 
             setEnviado(true);
             setInstituicaoId('');
             setValor('');
             setAlimentoId('');
+            setQuantidade('');
             setNome('');
             setEmail('');
         }
         catch (err) {
-            setErro('Não foi possível registrar sua doação. Tente novamente.');
+            setErro(err.message && err.message !== 'Falha ao enviar'
+                ? err.message
+                : 'Não foi possível registrar sua doação. Tente novamente.');
         }
     }
 
@@ -156,6 +166,19 @@ export default function Doacao(){
                                     </option>
                                 )}
                             </select>
+
+                            <label htmlFor="quantidade">
+                                Quantidade{alimentoSelecionado ? ` (${alimentoSelecionado.unidade})` : ''}
+                            </label>
+                            <input
+                                id="quantidade"
+                                type="number"
+                                min="1"
+                                step="1"
+                                value={quantidade}
+                                onChange={e => setQuantidade(e.target.value)}
+                                required
+                            />
                         </>
                     }
 

@@ -105,12 +105,12 @@ export default function Home(){
                     <div className="depoimentos">
                         <div className="depoimento">
                             <p>Doei uma vez por curiosidade e hoje sou doadora recorrente. Saber para onde vai cada real muda tudo.</p>
-                            <b>Lara Quaresma, Campinas - SP</b>
+                            <b>Rosemeire Lisboa, Campinas - SP</b>
                         </div>
 
                         <div className="depoimento">
                             <p>Esse projeto mudou minha vida, ajudou minha família em um momento difícil, e me deu esperança para continuar.</p>
-                            <b>Guilherme Gomes, São Paulo - SP</b>
+                            <b>Ivanilson Marinho, São Paulo - SP</b>
                         </div>
                     </div>
 

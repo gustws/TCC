@@ -45,7 +45,7 @@ export async function listContatos() {
            instituicao_id,
            data_envio
       from contatos
-     order by id desc
+     order by data_envio desc
   `
 
   const [linhas] = await con.query(command, [])

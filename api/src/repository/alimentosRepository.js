@@ -1,16 +1,16 @@
 import { con } from "./connection.js";
 
 
-export async function saveAlimento(alimentos) {
+export async function saveAlimento(alimento) {
   const command = `
     insert into alimentos (nome, categoria, unidade)
                    values (?, ?, ?)
   `
 
   const [result] = await con.query(command, [
-    alimentos.nome,
-    alimentos.categoria,
-    alimentos.unidade
+    alimento.nome,
+    alimento.categoria,
+    alimento.unidade
   ]);
 
   return result.insertId;
@@ -20,9 +20,9 @@ export async function saveAlimento(alimentos) {
 export async function getAlimento(id) {
   const command = `
     select id,
-        nome,
-        categoria,
-        unidade
+           nome,
+           categoria,
+           unidade
      from alimentos
     where id = ?
   `
@@ -56,9 +56,9 @@ export async function updateAlimento(id, alimento) {
   `
 
   const [result] = await con.query(command, [
-    alimentos.nome,
-    alimentos.categoria,
-    alimentos.unidade,
+    alimento.nome,
+    alimento.categoria,
+    alimento.unidade,
     id
   ]);
   return result.affectedRows;
@@ -67,7 +67,7 @@ export async function updateAlimento(id, alimento) {
 
 export async function deleteAlimento(id) {
   const command = `
-    delete from alimentos 
+    delete from alimentos
       where id = ?
   `
 

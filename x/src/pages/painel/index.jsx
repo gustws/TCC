@@ -64,6 +64,9 @@ export default function Painel(){
     const contatosFiltrado = contatos.filter(item =>
         combina([item.nome, item.email, item.mensagem], busca));
 
+    const estoqueFiltrado = estoque.filter(item =>
+        combina([item.nome, item.categoria], busca));
+
     function sair(){
         localStorage.removeItem('token');
         localStorage.removeItem('adminNome');
@@ -119,8 +122,9 @@ export default function Painel(){
     const placeholders = {
         dinheiro: 'Buscar por doador, e-mail ou instituição',
         alimentos: 'Buscar por doador, e-mail, alimento ou instituição',
+        estoque: 'Buscar por alimento ou categoria',        
         contatos: 'Buscar por nome, e-mail ou mensagem'
-    };
+     };
 
     return(
 
@@ -257,7 +261,7 @@ export default function Painel(){
                                             <td>{item.nome}</td>
                                             <td>{item.categoria}</td>
                                             <td>{item.quantidade} {item.unidade}</td>
-                                            <td className={Number(item.quantidade) > 0 ? '' : 'falta'}>
+                                            <td className={Number(item.quantidade) > 0 ? 'disponivel' : 'falta'}>
                                                 {Number(item.quantidade) > 0 ? 'Disponível' : 'Em falta'}
                                             </td>
                                         </tr>
