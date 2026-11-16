@@ -8,7 +8,7 @@ Integrantes =>
  - Lara Quaresma
 
 
-Antes de rodar o projeto, é necessário instalar o NodeJS e o MySQL Workbench (senha e usuário como root).
+Antes de rodar o projeto, é necessário instalar o NodeJS, o MySQL Workbench (senha e usuário como root), e executar os comandos:
 
     ---> Na API:
         cd api | npm install => node src/api.js
