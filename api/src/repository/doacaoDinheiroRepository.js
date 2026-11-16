@@ -31,7 +31,8 @@ export async function getDoacaoDinheiro(id) {
            valor,
            instituicao_id,
            nome_doador,
-           email_doador
+           email_doador,
+           verificada
      from doacao_dinheiro
     where id = ?
   `
@@ -48,7 +49,8 @@ export async function listDoacoesDinheiro() {
            valor,
            instituicao_id,
            nome_doador,
-           email_doador
+           email_doador,
+           verificada
      from doacao_dinheiro
   `
 
@@ -64,6 +66,7 @@ export async function listDoacoesDinheiroDetalhado() {
            doacao_dinheiro.valor,
            doacao_dinheiro.nome_doador,
            doacao_dinheiro.email_doador,
+           doacao_dinheiro.verificada,
            instituicao.nome as instituicao
       from doacao_dinheiro
       left join instituicao
@@ -74,7 +77,6 @@ export async function listDoacoesDinheiroDetalhado() {
   const [linhas] = await con.query(command, [])
   return linhas;
 }
-
 
 export async function updateDoacaoDinheiro(id, doacao) {
   const command = `

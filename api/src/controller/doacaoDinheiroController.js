@@ -1,16 +1,16 @@
 import { Router } from 'express';
 import * as dbDoacaoDinheiro from '../service/doacaoDinheiroService.js';
-import { exigirAdmin } from '../utils/auth.js';   // ← 1) import novo
+import { exigirAdmin } from '../utils/auth.js';
 
 const endpoints = Router();
 
 
-endpoints.get('/doacao-dinheiro/detalhado', exigirAdmin, async (req, resp) => {   // ← 2) exigirAdmin
+endpoints.get('/doacao-dinheiro/detalhado', exigirAdmin, async (req, resp) => {
   let doacoes = await dbDoacaoDinheiro.listDoacoesDinheiroDetalhado();
   resp.send(doacoes);
 })
 
-endpoints.get('/doacao-dinheiro/:id', exigirAdmin, async (req, resp) => {         // ← 2)
+endpoints.get('/doacao-dinheiro/:id', exigirAdmin, async (req, resp) => {
   let id = req.params.id;
 
   let doacao = await dbDoacaoDinheiro.getDoacaoDinheiro(id);
@@ -26,7 +26,7 @@ endpoints.put('/doacao-dinheiro/:id/verificar', exigirAdmin, async (req, resp) =
   resp.send({ qtd });
 })
 
-endpoints.get('/doacao-dinheiro', exigirAdmin, async (req, resp) => {             // ← 2)
+endpoints.get('/doacao-dinheiro', exigirAdmin, async (req, resp) => {
   let doacoes = await dbDoacaoDinheiro.listDoacoesDinheiro();
   resp.send(doacoes);
 })
@@ -35,19 +35,25 @@ endpoints.get('/doacao-dinheiro', exigirAdmin, async (req, resp) => {           
 endpoints.post('/doacao-dinheiro', async (req, resp) => {
   let doacao = req.body;
 
+  if (!Number.isInteger(doacao.valor) || doacao.valor <= 0)
+    return resp.status(400).send({ erro: 'Informe um valor inteiro maior que zero.' });
+
   let id = await dbDoacaoDinheiro.saveDoacaoDinheiro(doacao);
   resp.send({ id });
 })
 
-endpoints.put('/doacao-dinheiro/:id', exigirAdmin, async (req, resp) => {         // ← 2)
+endpoints.put('/doacao-dinheiro/:id', exigirAdmin, async (req, resp) => {
   let id = req.params.id;
   let doacao = req.body;
+
+  if (!Number.isInteger(doacao.valor) || doacao.valor <= 0)
+    return resp.status(400).send({ erro: 'Informe um valor inteiro maior que zero.' });
 
   let qtd = await dbDoacaoDinheiro.updateDoacaoDinheiro(id, doacao);
   resp.send({ qtd })
 })
 
-endpoints.delete('/doacao-dinheiro/:id', exigirAdmin, async (req, resp) => {      // ← 2)
+endpoints.delete('/doacao-dinheiro/:id', exigirAdmin, async (req, resp) => {
   let id = req.params.id;
 
   let qtd = await dbDoacaoDinheiro.deleteDoacaoDinheiro(id);

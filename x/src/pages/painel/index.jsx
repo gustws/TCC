@@ -170,7 +170,7 @@ export default function Painel(){
     const placeholders = {
         dinheiro: 'Buscar por doador, e-mail ou instituição',
         alimentos: 'Buscar por doador, e-mail, alimento ou instituição',
-        estoque: 'Buscar por alimento ou categoria',        
+        estoque: 'Buscar por alimento ou categoria',
         contatos: 'Buscar por nome, e-mail ou mensagem'
      };
 
@@ -313,7 +313,7 @@ export default function Painel(){
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {estoque.map(item =>
+                                    {estoqueFiltrado.map(item =>
                                         <tr key={item.alimento_id}>
                                             <td>{item.nome}</td>
                                             <td>{item.categoria}</td>
@@ -325,7 +325,8 @@ export default function Painel(){
                                     )}
                                 </tbody>
                             </table>
-                            {estoque.length === 0 && <p>Nenhum alimento cadastrado.</p>}
+                            {estoqueFiltrado.length === 0 &&
+                                <p>{busca ? 'Nenhum alimento encontrado para essa busca.' : 'Nenhum alimento cadastrado.'}</p>}
                         </div>
                     }
 
