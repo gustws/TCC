@@ -41,6 +41,15 @@ endpoints.put('/doacao-alimento/:id', exigirAdmin, async (req, resp) => {
   resp.send({ qtd })
 })
 
+endpoints.put('/doacao-alimento/:id/verificar', exigirAdmin, async (req, resp) => {
+  let qtd = await dbDoacaoAlimento.verificarDoacaoAlimento(req.params.id);
+
+  if (!qtd)
+    return resp.status(409).send({ erro: 'Doação não encontrada ou já verificada.' });
+
+  resp.send({ qtd });
+})
+
 endpoints.delete('/doacao-alimento/:id', exigirAdmin, async (req, resp) => {
   let id = req.params.id;
 

@@ -18,6 +18,11 @@ export async function saveDoacaoDinheiro(doacao) {
   return result.insertId;
 }
 
+export async function verificarDoacaoDinheiro(id) {
+  const [result] = await con.query(
+    'update doacao_dinheiro set verificada = true where id = ? and verificada = false', [id]);
+  return result.affectedRows;
+}
 
 export async function getDoacaoDinheiro(id) {
   const command = `

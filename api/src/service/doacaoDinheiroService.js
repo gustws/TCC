@@ -10,6 +10,9 @@ export async function getDoacaoDinheiro(id) {
   return db.getDoacaoDinheiro(id);
 }
 
+export async function verificarDoacaoDinheiro(id) {
+  return db.verificarDoacaoDinheiro(id);
+}
 
 export async function listDoacoesDinheiro() {
   return db.listDoacoesDinheiro();

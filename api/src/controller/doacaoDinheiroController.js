@@ -17,6 +17,15 @@ endpoints.get('/doacao-dinheiro/:id', exigirAdmin, async (req, resp) => {       
   resp.send(doacao);
 })
 
+endpoints.put('/doacao-dinheiro/:id/verificar', exigirAdmin, async (req, resp) => {
+  let qtd = await dbDoacaoDinheiro.verificarDoacaoDinheiro(req.params.id);
+
+  if (!qtd)
+    return resp.status(409).send({ erro: 'Doação não encontrada ou já verificada.' });
+
+  resp.send({ qtd });
+})
+
 endpoints.get('/doacao-dinheiro', exigirAdmin, async (req, resp) => {             // ← 2)
   let doacoes = await dbDoacaoDinheiro.listDoacoesDinheiro();
   resp.send(doacoes);

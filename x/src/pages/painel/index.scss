@@ -1,5 +1,31 @@
 .Pagina-Painel {
 
+    .btn-verificar {
+    background-color: rgb(194, 86, 10);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+
+        &:hover {
+            background-color: rgb(159, 66, 7);
+        }
+    }
+
+    .selo-verificada {
+        display: inline-block;
+        background-color: #e3f3e8;
+        color: #1e783c;
+        border-radius: 6px;
+        padding: 6px 12px;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+
     .falta {
         color: #b3261e;
         font-weight: 700;

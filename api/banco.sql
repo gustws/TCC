@@ -43,6 +43,7 @@ create table doacao_alimento (
   instituicao_id int,
   nome_doador varchar(100),
   email_doador varchar(100),
+  verificada boolean not null default false,
   foreign key (alimento_id) references alimentos(id),
   foreign key (instituicao_id) references instituicao(id)
 );
@@ -54,6 +55,7 @@ create table doacao_dinheiro (
   instituicao_id int,
   nome_doador varchar(100),
   email_doador varchar(100),
+  verificada boolean not null default false,
   foreign key (instituicao_id) references instituicao(id)
 );
 

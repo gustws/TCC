@@ -34,6 +34,13 @@ function combina(campos, termo) {
     return normalizar(campos.join(' ')).includes(normalizar(termo));
 }
 
+// célula da coluna "Verificação": selo se já verificada, botão se pendente
+function CelulaVerificacao({ item, onVerificar }) {
+    return Number(item.verificada) === 1
+        ? <span className="selo-verificada">Verificada</span>
+        : <button className="btn-verificar" onClick={onVerificar}>Verificar</button>;
+}
+
 export default function Painel(){
 
     const navigate = useNavigate();
@@ -42,6 +49,7 @@ export default function Painel(){
 
     const emFalta = estoque.filter(item => Number(item.quantidade) === 0);
 
+    const [erroAcao, setErroAcao] = useState('');
 
     const [aba, setAba] = useState('dinheiro');
     const [dinheiro, setDinheiro] = useState([]);
@@ -52,7 +60,12 @@ export default function Painel(){
     const [erro, setErro] = useState('');
 
     const nomeAdmin = localStorage.getItem('adminNome');
-    const totalArrecadado = dinheiro.reduce((soma, item) => soma + Number(item.valor), 0);
+
+    // só conta como arrecadado o dinheiro já verificado
+    const dinheiroVerificado = dinheiro.filter(item => Number(item.verificada) === 1);
+    const totalArrecadado = dinheiroVerificado.reduce((soma, item) => soma + Number(item.valor), 0);
+    const pendentes = dinheiro.length - dinheiroVerificado.length
+                    + alimentos.filter(item => Number(item.verificada) !== 1).length;
 
     // listas já filtradas pela busca
     const dinheiroFiltrado = dinheiro.filter(item =>
@@ -71,6 +84,41 @@ export default function Painel(){
         localStorage.removeItem('token');
         localStorage.removeItem('adminNome');
         navigate('/Login');
+    }
+
+    // tipo = 'doacao-dinheiro' ou 'doacao-alimento'
+    async function verificar(tipo, id){
+        setErroAcao('');
+        const token = localStorage.getItem('token');
+        const headers = { Authorization: `Bearer ${token}` };
+
+        try {
+            const resposta = await fetch(`${API_URL}/${tipo}/${id}/verificar`, { method: 'PUT', headers });
+
+            if (resposta.status === 401 || resposta.status === 403) {
+                sair();
+                return;
+            }
+
+            if (!resposta.ok) {
+                const dados = await resposta.json().catch(() => ({}));
+                throw new Error(dados.erro || 'Falha ao verificar');
+            }
+
+            if (tipo === 'doacao-dinheiro') {
+                setDinheiro(lista => lista.map(item => item.id === id ? { ...item, verificada: 1 } : item));
+            }
+            else {
+                setAlimentos(lista => lista.map(item => item.id === id ? { ...item, verificada: 1 } : item));
+
+                // a doação entrou no estoque, então recarrega a aba de estoque
+                const respEstoque = await fetch(`${API_URL}/estoque/detalhado`, { headers });
+                if (respEstoque.ok) setEstoque(await respEstoque.json());
+            }
+        }
+        catch (err) {
+            setErroAcao(err.message || 'Não foi possível verificar a doação.');
+        }
     }
 
     useEffect(() => {
@@ -141,11 +189,15 @@ export default function Painel(){
                 <div className="resumo">
                     <div className="card">
                         <h2>{formatarValor(totalArrecadado)}</h2>
-                        <p>{dinheiro.length} doações em dinheiro</p>
+                        <p>{dinheiroVerificado.length} doações em dinheiro verificadas</p>
                     </div>
                     <div className="card">
                         <h2>{alimentos.length}</h2>
                         <p>doações de alimentos</p>
+                    </div>
+                    <div className="card">
+                        <h2>{pendentes}</h2>
+                        <p>doações pendentes de verificação</p>
                     </div>
                     <div className="card">
                         <h2>{contatos.length}</h2>
@@ -185,6 +237,7 @@ export default function Painel(){
 
                     {carregando && <p>Carregando...</p>}
                     {erro && <p className="erro">{erro}</p>}
+                    {erroAcao && <p className="erro">{erroAcao}</p>}
 
                     {!carregando && !erro && aba === 'dinheiro' &&
                         <div className="tabela-scroll">
@@ -196,6 +249,7 @@ export default function Painel(){
                                         <th>E-mail</th>
                                         <th>Valor</th>
                                         <th>Instituição</th>
+                                        <th>Verificação</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -206,6 +260,7 @@ export default function Painel(){
                                             <td>{item.email_doador || '-'}</td>
                                             <td>{formatarValor(item.valor)}</td>
                                             <td>{item.instituicao || 'Onde mais precisar'}</td>
+                                            <td><CelulaVerificacao item={item} onVerificar={() => verificar('doacao-dinheiro', item.id)} /></td>
                                         </tr>
                                     )}
                                 </tbody>
@@ -225,6 +280,7 @@ export default function Painel(){
                                         <th>E-mail</th>
                                         <th>Alimento</th>
                                         <th>Instituição</th>
+                                        <th>Verificação</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -235,6 +291,7 @@ export default function Painel(){
                                             <td>{item.email_doador || '-'}</td>
                                             <td>{item.alimento}</td>
                                             <td>{item.instituicao || 'Onde mais precisar'}</td>
+                                            <td><CelulaVerificacao item={item} onVerificar={() => verificar('doacao-alimento', item.id)} /></td>
                                         </tr>
                                     )}
                                 </tbody>

@@ -26,20 +26,6 @@ import Painel from './pages/painel/index.jsx';
 import './pages/painel/index.scss';
 
 
-// imports de eventos
-import Cinema from './pages/eventos/cinema/index.jsx';
-import './pages/eventos/cinema/index.scss';
-import Calc from './pages/eventos/calc/index.jsx';
-import './pages/eventos/calc/index.scss';
-import Func from './pages/eventos/funcao/func.jsx';
-import './pages/eventos/funcao/func.scss';
-import Chamada from './pages/eventos/chamada api/index.jsx';
-import './pages/eventos/chamada api/index.scss';
-import App from './pages/eventos/app/App.jsx';
-import './pages/eventos/app/App.scss';
-import Acai from './pages/eventos/acai/index.jsx';
-import './pages/eventos/acai/index.scss';
-
 
 
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
@@ -57,13 +43,6 @@ root.render(
               <Route path='/Login' element={<Login/>}/>
               <Route path='/Painel' element={<Painel/>}/>
               <Route path='*' element ={<NotFound/>}/>  
-
-              <Route path='/Acai' element ={<Acai />}/>
-              <Route path='/Cinema' element ={<Cinema />}/>
-              <Route path='/Calc' element ={<Calc/>}/>
-              <Route path='/Func' element ={<Func/>}/>    
-              <Route path='/Chamada' element ={<Chamada/>}/>  
-              <Route path='/App' element ={<App/>}/>
 
           </Routes>
         </BrowserRouter>

@@ -5,6 +5,9 @@ export async function saveDoacaoAlimento(doacao) {
   return db.saveDoacaoAlimento(doacao);
 }
 
+export async function verificarDoacaoAlimento(id) {
+  return db.verificarDoacaoAlimento(id);
+}
 
 export async function getDoacaoAlimento(id) {
   return db.getDoacaoAlimento(id);

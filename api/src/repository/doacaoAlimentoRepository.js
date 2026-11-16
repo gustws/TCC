@@ -29,21 +29,34 @@ async function ajustarEstoque(conn, alimento_id, delta) {
 
 
 export async function saveDoacaoAlimento(doacao) {
-  return emTransacao(async (conn) => {
-    const [result] = await conn.query(`
-      insert into doacao_alimento (alimento_id, quantidade, data_doacao, instituicao_id, nome_doador, email_doador)
-                           values (?, ?, ?, ?, ?, ?)
-    `, [
-      doacao.alimento_id,
-      doacao.quantidade,
-      doacao.data_doacao,
-      doacao.instituicao_id ?? null,
-      doacao.nome_doador ?? null,
-      doacao.email_doador ?? null
-    ]);
+  // não mexe mais no estoque: só entra nele quando for verificada
+  const [result] = await con.query(`
+    insert into doacao_alimento (alimento_id, quantidade, data_doacao, instituicao_id, nome_doador, email_doador)
+                         values (?, ?, ?, ?, ?, ?)
+  `, [
+    doacao.alimento_id,
+    doacao.quantidade,
+    doacao.data_doacao,
+    doacao.instituicao_id ?? null,
+    doacao.nome_doador ?? null,
+    doacao.email_doador ?? null
+  ]);
 
+  return result.insertId;
+}
+
+
+export async function verificarDoacaoAlimento(id) {
+  return emTransacao(async (conn) => {
+    const [[doacao]] = await conn.query(
+      'select alimento_id, quantidade, verificada from doacao_alimento where id = ? for update', [id]);
+
+    if (!doacao || doacao.verificada) return 0;
+
+    await conn.query('update doacao_alimento set verificada = true where id = ?', [id]);
     await ajustarEstoque(conn, doacao.alimento_id, doacao.quantidade);
-    return result.insertId;
+
+    return 1;
   });
 }
 
@@ -56,7 +69,8 @@ export async function getDoacaoAlimento(id) {
            data_doacao,
            instituicao_id,
            nome_doador,
-           email_doador
+           email_doador,
+           verificada
      from doacao_alimento
     where id = ?
   `
@@ -74,7 +88,8 @@ export async function listDoacoesAlimento() {
            data_doacao,
            instituicao_id,
            nome_doador,
-           email_doador
+           email_doador,
+           verificada
      from doacao_alimento
   `
 
@@ -90,6 +105,7 @@ export async function listDoacoesAlimentoDetalhado() {
            doacao_alimento.quantidade,
            doacao_alimento.nome_doador,
            doacao_alimento.email_doador,
+           doacao_alimento.verificada,
            alimentos.nome as alimento,
            alimentos.unidade,
            instituicao.nome as instituicao
@@ -109,7 +125,7 @@ export async function listDoacoesAlimentoDetalhado() {
 export async function updateDoacaoAlimento(id, doacao) {
   return emTransacao(async (conn) => {
     const [[antiga]] = await conn.query(
-      'select alimento_id, quantidade from doacao_alimento where id = ? for update', [id]);
+      'select alimento_id, quantidade, verificada from doacao_alimento where id = ? for update', [id]);
 
     if (!antiga) return 0;
 
@@ -132,9 +148,10 @@ export async function updateDoacaoAlimento(id, doacao) {
       id
     ]);
 
-    // desfaz o efeito da doação antiga e aplica o da nova
-    await ajustarEstoque(conn, antiga.alimento_id, -antiga.quantidade);
-    await ajustarEstoque(conn, doacao.alimento_id, doacao.quantidade);
+    if (antiga.verificada) {
+      await ajustarEstoque(conn, antiga.alimento_id, -antiga.quantidade);
+      await ajustarEstoque(conn, doacao.alimento_id, doacao.quantidade);
+    }
 
     return result.affectedRows;
   });
@@ -144,12 +161,14 @@ export async function updateDoacaoAlimento(id, doacao) {
 export async function deleteDoacaoAlimento(id) {
   return emTransacao(async (conn) => {
     const [[antiga]] = await conn.query(
-      'select alimento_id, quantidade from doacao_alimento where id = ? for update', [id]);
+      'select alimento_id, quantidade, verificada from doacao_alimento where id = ? for update', [id]);
 
     if (!antiga) return 0;
 
     const [result] = await conn.query('delete from doacao_alimento where id = ?', [id]);
-    await ajustarEstoque(conn, antiga.alimento_id, -antiga.quantidade);
+
+    if (antiga.verificada)
+      await ajustarEstoque(conn, antiga.alimento_id, -antiga.quantidade);
 
     return result.affectedRows;
   });
