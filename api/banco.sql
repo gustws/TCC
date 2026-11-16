@@ -1,6 +1,7 @@
 create database MesaCheiaDB;
 use MesaCheiaDB;
-drop database MesaCheiaDB;
+-- drop database MesaCheiaDB;   -- descomente só se quiser apagar tudo e recriar do zero
+
 
 create table alimentos (
   id int primary key auto_increment,
@@ -26,6 +27,7 @@ create table usuarios (
   telefone varchar(20),
   admin boolean not null default false
 );
+
 create table estoque (
   id int primary key auto_increment,
   quantidade int,
@@ -62,6 +64,7 @@ create table contatos (
   mensagem varchar(500),
   usuario_id int,
   instituicao_id int,
+  data_envio datetime default current_timestamp,
   foreign key (usuario_id) references usuarios(id),
   foreign key (instituicao_id) references instituicao(id)
 );
@@ -92,6 +95,7 @@ insert into alimentos (nome, categoria, unidade) values
 ('Legumes', 'hortifruti', 'kg');
 
 select * from usuarios;
+select * from contatos;
 select * from instituicao;
 select * from alimentos;
 select * from doacao_dinheiro;

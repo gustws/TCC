@@ -1,7 +1,6 @@
 import { useState } from "react";
 import './index.scss';
 import { Link } from 'react-router-dom';
-import { createIcons, Heart } from 'lucide-react';
 
 export default function Rodape(){
 
@@ -11,7 +10,7 @@ export default function Rodape(){
         <footer className="comp-rodape">
 
             <div className="logo-nome">
-               <Heart />
+
                 <h2>Rede Alimenta</h2>
             </div>
 

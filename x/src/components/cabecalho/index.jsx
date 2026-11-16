@@ -15,9 +15,13 @@ export default function Cabecalho(){
                     <li><Link to="/Doar">Faça sua doação</Link></li>
                     <li><Link to="/Instituicoes">Instituições</Link></li>
                     <li><Link to="/SobreNos">Sobre e dúvidas</Link></li>
+                    <li>
+                        <a href="https://linktr.ee/gustavotccfrei" target="_blank" rel="noopener noreferrer">
+                            Nossas Redes
+                        </a>
+                    </li>
                 </ul>
 
-                <input type="search" placeholder="🔍︎  Procure por pontos de coleta" />
 
                 <ul className="botoes2">
                     <li className="contato"><Link to="/Contato">Contato</Link></li>

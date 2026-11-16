@@ -87,10 +87,10 @@ export default function Contato(){
                     <h2>Fale com a gente</h2>
 
                     <h3>E-mail</h3>
-                    <p>contato@pratocheio.exemplo</p>
+                    <p>contato@redealimenta.org</p>
 
                     <h3>Telefone</h3>
-                    <p>(11) 4000-0000</p>
+                    <p>(11) 5892-5061</p>
 
                     <h3>Quer ser instituição parceira?</h3>
                     <p>Conte pelo formulário quem você atende e como podemos ajudar.</p>

@@ -24,7 +24,8 @@ export async function getContato(id) {
            email,
            mensagem,
            usuario_id,
-           instituicao_id
+           instituicao_id,
+           data_envio
       from contatos
      where id = ?
   `
@@ -41,8 +42,10 @@ export async function listContatos() {
            email,
            mensagem,
            usuario_id,
-           instituicao_id
+           instituicao_id,
+           data_envio
       from contatos
+     order by id desc
   `
 
   const [linhas] = await con.query(command, [])

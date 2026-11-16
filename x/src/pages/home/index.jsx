@@ -104,17 +104,17 @@ export default function Home(){
 
                     <div className="depoimentos">
                         <div className="depoimento">
-                            <p>Doei uma vez por curiosidade e hoje sou afiliada. Saber para onde vai cada real muda tudo.</p>
-                            <b>marjorie, enfermeira do sao luis</b>
+                            <p>Doei uma vez por curiosidade e hoje sou doadora recorrente. Saber para onde vai cada real muda tudo.</p>
+                            <b>Lara Quaresma, Campinas - SP</b>
                         </div>
 
                         <div className="depoimento">
-                            <p>Com a lista de necessidades no site, paramos de receber só arroz e passamos a receber o que falta.</p>
-                            <b>denis, cobrador do 6000-10</b>
+                            <p>Esse projeto mudou minha vida, ajudou minha família em um momento difícil, e me deu esperança para continuar.</p>
+                            <b>Guilherme Gomes, São Paulo - SP</b>
                         </div>
                     </div>
 
-                    <p className="nota">depoimentos tlgd</p>
+                    <p className="nota">Depoimentos de doadores e beneficiados.</p>
                 </div>
             </section>
 
