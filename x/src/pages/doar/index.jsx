@@ -22,7 +22,7 @@ export default function Doacao(){
     const [alimentoId, setAlimentoId] = useState('');
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
-
+    const [quantidade, setQuantidade] = useState('');
     const [instituicoes, setInstituicoes] = useState([]);
     const [alimentos, setAlimentos] = useState([]);
     const [enviado, setEnviado] = useState(false);
@@ -68,14 +68,15 @@ export default function Doacao(){
         }
         else {
             rota = '/doacao-alimento';
-            corpo = {
-                alimento_id: Number(alimentoId),
-                data_doacao: dataHoje(),
-                usuario_id: null,
-                instituicao_id,
-                nome_doador: nome,
-                email_doador: email
-            };
+                corpo = {
+                    alimento_id: Number(alimentoId),
+                    quantidade: Number(quantidade),
+                    data_doacao: dataHoje(),
+                    usuario_id: null,
+                    instituicao_id,
+                    nome_doador: nome,
+                    email_doador: email
+                };
         }
 
         try {

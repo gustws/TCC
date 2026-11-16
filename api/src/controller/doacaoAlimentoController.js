@@ -23,9 +23,11 @@ endpoints.get('/doacao-alimento', exigirAdmin, async (req, resp) => {
   resp.send(doacoes);
 })
 
-// público: é o formulário de doação do site
 endpoints.post('/doacao-alimento', async (req, resp) => {
   let doacao = req.body;
+
+  if (!Number.isInteger(doacao.quantidade) || doacao.quantidade <= 0)
+    return resp.status(400).send({ erro: 'Informe uma quantidade inteira maior que zero.' });
 
   let id = await dbDoacaoAlimento.saveDoacaoAlimento(doacao);
   resp.send({ id });

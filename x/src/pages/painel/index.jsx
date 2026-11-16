@@ -38,6 +38,11 @@ export default function Painel(){
 
     const navigate = useNavigate();
 
+    const [estoque, setEstoque] = useState([]);
+
+    const emFalta = estoque.filter(item => Number(item.quantidade) === 0);
+
+
     const [aba, setAba] = useState('dinheiro');
     const [dinheiro, setDinheiro] = useState([]);
     const [alimentos, setAlimentos] = useState([]);
@@ -77,25 +82,27 @@ export default function Painel(){
             try {
                 const headers = { Authorization: `Bearer ${token}` };
 
-                const [respDinheiro, respAlimentos, respContatos] = await Promise.all([
+                const [respDinheiro, respAlimentos, respEstoque, respContatos] = await Promise.all([
                     fetch(`${API_URL}/doacao-dinheiro/detalhado`, { headers }),
                     fetch(`${API_URL}/doacao-alimento/detalhado`, { headers }),
+                    fetch(`${API_URL}/estoque/detalhado`, { headers }),
                     fetch(`${API_URL}/contato`, { headers })
                 ]);
 
                 // token inválido, expirado ou sem permissão de admin
-                if ([respDinheiro.status, respAlimentos.status, respContatos.status].some(s => s === 401 || s === 403)) {
+                if ([respDinheiro.status, respAlimentos.status, respEstoque.status, respContatos.status].some(s => s === 401 || s === 403)) {
                     localStorage.removeItem('token');
                     localStorage.removeItem('adminNome');
                     navigate('/Login');
                     return;
                 }
 
-                if (!respDinheiro.ok || !respAlimentos.ok || !respContatos.ok)
+                if (!respDinheiro.ok || !respAlimentos.ok || !respEstoque.ok || !respContatos.ok)
                     throw new Error('Falha ao carregar');
 
                 setDinheiro(await respDinheiro.json());
                 setAlimentos(await respAlimentos.json());
+                setEstoque(await respEstoque.json());
                 setContatos(await respContatos.json());
             }
             catch (err) {
@@ -140,6 +147,10 @@ export default function Painel(){
                         <h2>{contatos.length}</h2>
                         <p>mensagens de contato</p>
                     </div>
+                    <div className="card">
+                        <h2>{emFalta.length}</h2>
+                        <p>alimentos em falta no estoque</p>
+                    </div>
                     <button className="sair" onClick={sair}>Sair</button>
                 </div>
 
@@ -151,6 +162,9 @@ export default function Painel(){
                         </button>
                         <button className={aba === 'alimentos' ? 'ativa' : ''} onClick={() => setAba('alimentos')}>
                             Alimentos ({alimentos.length})
+                        </button>
+                        <button className={aba === 'estoque' ? 'ativa' : ''} onClick={() => setAba('estoque')}>
+                            Estoque ({estoque.length})
                         </button>
                         <button className={aba === 'contatos' ? 'ativa' : ''} onClick={() => setAba('contatos')}>
                             Contatos ({contatos.length})
@@ -223,6 +237,34 @@ export default function Painel(){
                             </table>
                             {alimentosFiltrado.length === 0 &&
                                 <p>{busca ? 'Nenhuma doação de alimentos encontrada para essa busca.' : 'Nenhuma doação de alimentos registrada.'}</p>}
+                        </div>
+                    }
+
+                    {!carregando && !erro && aba === 'estoque' &&
+                        <div className="tabela-scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Alimento</th>
+                                        <th>Categoria</th>
+                                        <th>Em estoque</th>
+                                        <th>Situação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {estoque.map(item =>
+                                        <tr key={item.alimento_id}>
+                                            <td>{item.nome}</td>
+                                            <td>{item.categoria}</td>
+                                            <td>{item.quantidade} {item.unidade}</td>
+                                            <td className={Number(item.quantidade) > 0 ? '' : 'falta'}>
+                                                {Number(item.quantidade) > 0 ? 'Disponível' : 'Em falta'}
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                            {estoque.length === 0 && <p>Nenhum alimento cadastrado.</p>}
                         </div>
                     }
 

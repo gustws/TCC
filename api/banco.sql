@@ -30,15 +30,15 @@ create table usuarios (
 
 create table estoque (
   id int primary key auto_increment,
-  quantidade int,
-  validade date,
-  alimento_id int,
+  quantidade int not null default 0,
+  alimento_id int not null unique,
   foreign key (alimento_id) references alimentos(id)
 );
 
 create table doacao_alimento (
   id int primary key auto_increment,
   alimento_id int,
+  quantidade int not null,
   data_doacao date,
   instituicao_id int,
   nome_doador varchar(100),
